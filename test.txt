@@ -1,1 +1,40 @@
 hello !!!!!!
+
+#include <stdio.h>
+
+
+int main() {
+  int puzzles[10001];
+ int n,m,k,differ;
+ int temp;
+ int i,j,save;
+ int mindiffrent=2000;
+ scanf("%d %d",&n , &m);
+
+    for(i=0;i<m;i++){
+        scanf("%d",&puzzles[i]);
+    }
+
+    for(i=0;i<m;i++){   //مرتب سازی صعودی آرایه
+        for(j=i+1;j<m;j++){
+            if(puzzles[i]>puzzles[j]){
+                save=puzzles[i];
+                puzzles[i]=puzzles[j];
+                puzzles[j]=save;
+            }
+        }
+    }
+
+    i=0;
+    while(i<=m-n){
+        j=i+n-1;
+        save =(puzzles[j] - puzzles[i]);
+        if (mindiffrent > save)
+            mindiffrent = save;
+        i++;   
+    }
+
+    printf("%d",mindiffrent);
+
+    return 0;
+}
